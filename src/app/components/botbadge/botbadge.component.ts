@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-botbadge',
   templateUrl: './botbadge.component.html',
@@ -7,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BotbadgeComponent implements OnInit {
 
-  constructor() { }
 
   ngOnInit(): void {
   }

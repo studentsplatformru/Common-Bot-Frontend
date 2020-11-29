@@ -9,7 +9,6 @@ import {map, startWith} from 'rxjs/operators';
   styleUrls: ['./searchbots.component.scss']
 })
 export class SearchbotsComponent implements OnInit {
-
   myControl = new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;

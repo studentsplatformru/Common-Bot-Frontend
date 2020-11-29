@@ -11,13 +11,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDividerModule } from '@angular/material/divider';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { UserpanelComponent } from './components/userpanel/userpanel.component';
 import { SearchbotsComponent } from './components/searchbots/searchbots.component';
 import { BotbadgeComponent } from './components/botbadge/botbadge.component';
+import { SearchbotsortComponent } from './components/searchbotsort/searchbotsort.component';
 
 @NgModule({
   declarations: [
@@ -27,22 +30,25 @@ import { BotbadgeComponent } from './components/botbadge/botbadge.component';
     SidebarComponent,
     UserpanelComponent,
     SearchbotsComponent,
-    BotbadgeComponent
+    BotbadgeComponent,
+    SearchbotsortComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     StoreModule.forRoot({}, {}),
     BrowserAnimationsModule,
-    MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatSelectModule,
+    MatToolbarModule,
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
     MatDividerModule,
     MatAutocompleteModule,
-    FormsModule,
-    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

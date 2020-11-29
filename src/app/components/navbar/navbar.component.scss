@@ -1,1 +1,14 @@
- 
+.navbar { 
+  width: 100%;
+}
+
+.navbar-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.nav-user-panel {
+  align-self: flex-end;
+}

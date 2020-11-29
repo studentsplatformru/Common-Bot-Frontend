@@ -1,12 +1,12 @@
-<mat-toolbar>
-  <mat-toolbar-row>
-    <div>
-      <a mat-button [routerLink]><span>Название</span></a>
+<mat-toolbar class="navbar">
+  <mat-toolbar-row class="navbar-wrapper">
+    <div class="nav-links">
+      <a mat-button [routerLink]><h3>Название</h3></a>
       <span class="menu-spacer"></span>
       <a mat-button [routerLink]><span>О сервисе</span></a>
       <a mat-button [routerLink]><span>Тарифы</span></a>
       <a mat-button [routerLink]><span>Инструкции</span></a>
     </div>
-    <app-userpanel></app-userpanel>
+    <app-userpanel class="nav-user-panel"></app-userpanel>
   </mat-toolbar-row>
 </mat-toolbar>
