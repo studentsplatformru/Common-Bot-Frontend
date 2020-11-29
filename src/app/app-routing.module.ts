@@ -5,14 +5,21 @@ import { EmptyLayoutComponent } from './layout/empty-layout/empty-layout.compone
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: MainLayoutComponent},
-  { path: 'auth', component: EmptyLayoutComponent}
+  { path: 'dashboard', component: MainLayoutComponent },
+  { path: 'auth', component: EmptyLayoutComponent },
+  {
+    path: 'posting',
+    loadChildren: () =>
+      import('./components/posting/posting.module').then(
+        (m) => m.PostingModule
+      ),
+  },
 ];
 
-export const routedComponents = [ MainLayoutComponent, EmptyLayoutComponent ]
+export const routedComponents = [MainLayoutComponent, EmptyLayoutComponent];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [ RouterModule ]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
