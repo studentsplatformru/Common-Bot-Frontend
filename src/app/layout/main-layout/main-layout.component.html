@@ -8,11 +8,11 @@
     </div>
     <div class="bots-slider">
       <app-botbadge 
-        *ngFor="let myBot of myBots"
-        [botName]="myBot.botName"
-        [botDescription]="myBot.botDescription"
-        [botIcon]="myBot.botIcon"
-        [botChannels]="myBot.botChannels"
+        *ngFor="let bot of myBots"
+        [botName]="bot.botName"
+        [botDescription]="bot.botDescription"
+        [botIcon]="bot.botIcon"
+        [botChannels]="bot.botChannels"
       ></app-botbadge>
     </div>
   </div>
@@ -24,11 +24,10 @@
     </div>
     <div class="bots-slider">
       <app-botbadge 
-        *ngFor="let myBot of allBots"
-        [botName]="myBot.botName"
-        [botDescription]="myBot.botDescription"
-        [botIcon]="myBot.botIcon"
-        [botChannels]="myBot.botChannels"
+        *ngFor="let bot of allBots"
+        [botName]="bot.botName"
+        [botDescription]="bot.botDescription"
+        [botIcon]="bot.botIcon"
       ></app-botbadge>
     </div>
   </div>
