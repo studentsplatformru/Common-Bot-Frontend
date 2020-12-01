@@ -7,9 +7,13 @@
       <app-searchbotsort></app-searchbotsort>
     </div>
     <div class="bots-slider">
-      <app-botbadge></app-botbadge>
-      <app-botbadge></app-botbadge>
-      <app-botbadge></app-botbadge>
+      <app-botbadge 
+        *ngFor="let myBot of myBots"
+        [botName]="myBot.botName"
+        [botDescription]="myBot.botDescription"
+        [botIcon]="myBot.botIcon"
+        [botChannels]="myBot.botChannels"
+      ></app-botbadge>
     </div>
   </div>
   <div id="allBots">
@@ -19,9 +23,13 @@
       <app-searchbotsort></app-searchbotsort>
     </div>
     <div class="bots-slider">
-      <app-botbadge></app-botbadge>
-      <app-botbadge></app-botbadge>
-      <app-botbadge></app-botbadge>
+      <app-botbadge 
+        *ngFor="let myBot of allBots"
+        [botName]="myBot.botName"
+        [botDescription]="myBot.botDescription"
+        [botIcon]="myBot.botIcon"
+        [botChannels]="myBot.botChannels"
+      ></app-botbadge>
     </div>
   </div>
 </div>

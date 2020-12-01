@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 interface Bot {
-  name: string;
-  icon: null;
-  description: string;
-  channelNumber: number;
+  botName: string;
+  botIcon: string;
+  botDescription: string;
+  botChannels: number;
 }
 
 @Component({
@@ -15,9 +15,15 @@ interface Bot {
 export class MainLayoutComponent implements OnInit {
 
   myBots: Bot[] = [
-    { name: 'Игорь', icon:null, description:'Отвечает на вопросы, обрабатывает запросы', channelNumber:4 },
-    { name: 'Андрюша', icon:null, description:'Генерирует шутки по заданной теме', channelNumber:8 },
-    { name: 'Инокентий', icon:null, description:'Знает все новости о политике', channelNumber:3 },
+    { botName: 'Игорь', botIcon:null, botDescription:'Отвечает на вопросы, обрабатывает запросы', botChannels:4 },
+    { botName: 'Андрюша', botIcon:null, botDescription:'Генерирует шутки по заданной теме', botChannels:8 },
+    { botName: 'Инокентий', botIcon:null, botDescription:'Знает все новости о политике', botChannels:3 },
+  ]
+
+  allBots: Bot[] = [
+    { botName: 'Игорь', botIcon:null, botDescription:'Отвечает на вопросы, обрабатывает запросы', botChannels:4 },
+    { botName: 'Андрюша', botIcon:null, botDescription:'Генерирует шутки по заданной теме', botChannels:8 },
+    { botName: 'Инокентий', botIcon:null, botDescription:'Знает все новости о политике', botChannels:3 },
   ]
 
   ngOnInit(): void {

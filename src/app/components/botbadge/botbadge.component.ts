@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 
 @Component({
@@ -6,10 +6,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './botbadge.component.html',
   styleUrls: ['./botbadge.component.scss']
 })
-export class BotbadgeComponent implements OnInit {
-
-
-  ngOnInit(): void {
-  }
-
+export class BotbadgeComponent {
+  @Input('botName') botName: string;
+  @Input('botIcon') botIcon: string;
+  @Input('botDescription') botDescription: string;
+  @Input('botChannels') botChannels: number;
 }

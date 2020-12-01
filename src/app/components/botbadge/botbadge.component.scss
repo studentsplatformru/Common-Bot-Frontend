@@ -28,10 +28,15 @@
 
   &__description {
     grid-area: 3 / 1 / 3 / 3;
+    padding: 0 20px 0 20px;
   }
 
   &__channels {
     justify-self: center;
     align-self: center;
+  }
+
+  &__button {
+    text-align: right;
   }
 }
