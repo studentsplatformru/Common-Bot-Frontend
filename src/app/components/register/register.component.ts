@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  onRegisterSubmit() {
+  onRegisterSubmit(): void {
     alert(this.user.name + ' ' + this.user.email + ' ' + this.user.password);
   }
 }

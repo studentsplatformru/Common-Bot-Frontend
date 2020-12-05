@@ -1,4 +1,4 @@
-export class LoginModel {
-  email: String;
-  password: String;
+export interface LoginModel {
+  email: string;
+  password: string;
 }
