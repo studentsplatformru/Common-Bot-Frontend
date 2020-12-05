@@ -1,0 +1,13 @@
+<div class="bot-badge">
+  <span class="bot-badge__icon">
+    <svg width="63" height="64" viewBox="0 0 63 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="31.25" cy="31.6981" rx="31.25" ry="31.6981" fill="#979797"/>
+    </svg>      
+  </span>
+  <h3 class="bot-badge__name">{{ botName }}</h3>
+  <p class="bot-badge__description">{{ botDescription }}</p>
+  <span class="bot-badge__channels">
+    <p *ngIf="botChannels!=null">{{ botChannels }} канала</p>
+  </span>
+  <a class="bot-badge__button" mat-button>Еще</a>
+</div>

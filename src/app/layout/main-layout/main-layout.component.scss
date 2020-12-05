@@ -1,0 +1,29 @@
+.flexbox {
+  width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px 0 40px;
+}
+
+h2 {
+  padding-top: 60px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 16px;
+  color: #121212;
+}
+
+.search-panel {
+  width: 588px;
+  padding: 20px 0 20px 0;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+
+  * {
+    align-self: flex-end;
+  }
+}
