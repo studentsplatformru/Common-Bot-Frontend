@@ -1,25 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NewPostingComponent } from './components/new-posting/new-posting.component';
+import { PostingRoutingModule } from './posting-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NewPostingComponent } from './containers/new-posting/new-posting.component';
+import { PublicationSettingsPanelComponent } from './components/publication-settings-panel/publication-settings-panel.component';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
-import { NgxEditorJSModule } from '@tinynodes/ngx-editorjs';
+import 'froala-editor/js/plugins.pkgd.min.js';
 
 @NgModule({
   imports: [
     CommonModule,
-    NgxEditorJSModule.forRoot({
-      // Optional Configuration, see all keys below
-      editorjs: {
-        autofocus: false,
-        holder: 'editor',
-        initialBlock: 'paragraph',
-        data: {
-          time: Date.now(),
-          blocks: [],
-        },
-      },
-    }),
+    PostingRoutingModule,
+    SharedModule,
+    ReactiveFormsModule,
+    FormsModule,
+    FroalaEditorModule,
+    FroalaViewModule,
   ],
-  declarations: [NewPostingComponent],
+  declarations: [NewPostingComponent, PublicationSettingsPanelComponent],
 })
 export class PostingModule {}
