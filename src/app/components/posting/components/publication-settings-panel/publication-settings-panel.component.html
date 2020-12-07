@@ -1,1 +1,90 @@
-<div class="settings-panel">HI</div>
+<div class="settings-panel">
+  <!-- control block -->
+  <div class="control-block">
+    <h3 class="settings-panel-title">Место публикации</h3>
+    <div class="chats-wrapper">
+      <mat-checkbox
+        class="select-all-chats"
+        aria-label="Select All"
+        [checked]="isChecked()"
+        [indeterminate]="isIndeterminate()"
+        (change)="$event ? toggleAll($event) : null"
+      >
+        Выбрать все
+      </mat-checkbox>
+
+      <div class="chats">
+        <mat-checkbox
+          *ngFor="let chat of chats | slice: 0:counter"
+          color="primary"
+          (change)="$event ? toggle(chat, $event) : null"
+          [checked]="exists(chat)"
+          class="chat"
+        >
+          {{ chat.text }}
+        </mat-checkbox>
+      </div>
+
+      <button
+        (click)="showMore()"
+        *ngIf="counter < chats.length"
+        class="load-more-chats"
+      >
+        <span>Еще каналы</span>
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- control block -->
+  <div class="control-block">
+    <h3 class="settings-panel-title">Дата и время публикации</h3>
+    <mat-radio-group class="settings-radio-group" [(ngModel)]="dateOption">
+      <mat-radio-button
+        color="primary"
+        class="example-radio-button"
+        [value]="1"
+      >
+        Сейчас
+      </mat-radio-button>
+      <mat-radio-button
+        color="primary"
+        class="example-radio-button"
+        [value]="2"
+        (change)="
+          $event.checked
+            ? (showDateControls = true)
+            : (showDateControls = false)
+        "
+      >
+        Установить время
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <!-- control block -->
+  <div class="control-block">
+    <h3 class="settings-panel-title">Удалить пост</h3>
+    <mat-radio-group class="settings-radio-group" [(ngModel)]="deleteOption">
+      <mat-radio-button
+        color="primary"
+        class="example-radio-button"
+        [value]="1"
+      >
+        Не удалять
+      </mat-radio-button>
+      <mat-radio-button
+        color="primary"
+        class="example-radio-button"
+        [value]="2"
+        (change)="
+          $event.checked
+            ? (showDeleteControls = true)
+            : (showDeleteControls = false)
+        "
+      >
+        Установить время
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>

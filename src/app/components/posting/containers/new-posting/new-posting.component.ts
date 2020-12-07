@@ -5,7 +5,7 @@ import {
   transition,
   animate,
 } from '@angular/animations';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -33,7 +33,7 @@ import { FormControl, FormGroup } from '@angular/forms';
       state(
         'not-moved',
         style({
-          right: '-15px',
+          right: '-27px',
         })
       ),
       state(
@@ -47,7 +47,7 @@ import { FormControl, FormGroup } from '@angular/forms';
     ]),
   ],
 })
-export class NewPostingComponent implements OnInit, AfterViewInit {
+export class NewPostingComponent implements OnInit {
   public postForm: FormGroup;
   public isOpen: boolean = true;
   public options: Object = {
@@ -58,9 +58,7 @@ export class NewPostingComponent implements OnInit, AfterViewInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
-
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
     this.createForm();
   }
 

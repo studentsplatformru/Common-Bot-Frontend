@@ -10,5 +10,85 @@
   box-sizing: border-box;
 }
 
-.settings-panel {
+.control-block {
+  &:not(:first-child) {
+    margin-top: 29px;
+  }
+}
+
+.settings-panel-title {
+  font-weight: 500;
+  line-height: 1.1875;
+  margin-bottom: 13px;
+}
+
+.select-all-chats {
+  color: #3e3e3f;
+  font-size: 12px;
+
+  ::ng-deep {
+    .mat-checkbox-inner-container {
+      display: none;
+    }
+
+    .mat-checkbox-layout .mat-checkbox-label {
+      line-height: 1.33;
+    }
+  }
+}
+
+.load-more-chats {
+  color: #4f4f4f;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font: 400 14px/1.33 "Roboto", sans-serif;
+
+  > * {
+    &:not(:first-child) {
+      margin-left: 10px;
+    }
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  mat-icon {
+    transform: rotate(90deg);
+  }
+}
+
+.chats {
+  margin-top: 8px;
+
+  mat-checkbox {
+    display: block;
+  }
+
+  > * {
+    &:not(:first-child) {
+      margin-top: 9px;
+    }
+  }
+}
+
+.settings-radio-group {
+  display: block;
+  margin-top: 15px;
+
+  mat-radio-button {
+    display: block;
+  }
+
+  > * {
+    &:not(:first-child) {
+      margin-top: 12px;
+    }
+  }
 }
