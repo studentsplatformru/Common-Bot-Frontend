@@ -1,4 +1,4 @@
-<div class="settings-panel">
+<form [formGroup]="settingsForm" class="settings-panel">
   <!-- control block -->
   <div class="control-block">
     <h3 class="settings-panel-title">Место публикации</h3>
@@ -17,7 +17,9 @@
         <mat-checkbox
           *ngFor="let chat of chats | slice: 0:counter"
           color="primary"
-          (change)="$event ? toggle(chat, $event) : null"
+          (change)="
+            checkboxChange($event, chat); $event ? toggle(chat, $event) : null
+          "
           [checked]="exists(chat)"
           class="chat"
         >
@@ -39,29 +41,33 @@
   <!-- control block -->
   <div class="control-block">
     <h3 class="settings-panel-title">Дата и время публикации</h3>
-    <mat-radio-group class="settings-radio-group" [(ngModel)]="dateOption">
+    <mat-radio-group
+      class="settings-radio-group"
+      formControlName="dateControls"
+    >
       <mat-radio-button
         color="primary"
+        checked
         class="example-radio-button"
-        (change)="showDateControls = false"
-        [value]="1"
+        value="1"
+        (change)="timeChange(false)"
       >
         Сейчас
       </mat-radio-button>
       <mat-radio-button
         color="primary"
+        value="2"
         class="example-radio-button"
-        [value]="2"
-        (change)="
-          $event.source.checked
-            ? (showDateControls = true)
-            : (showDateControls = false)
-        "
+        (change)="timeChange(true)"
       >
         Установить время
       </mat-radio-button>
     </mat-radio-group>
-    <div class="date-controls" *ngIf="showDateControls">
+    <div
+      class="date-controls"
+      formGroupName="dateGroup"
+      *ngIf="showDateControls"
+    >
       <div class="date-control">
         <div class="settings-caption">Дата</div>
         <div class="settings-field date-field">
@@ -70,6 +76,7 @@
           </div>
           <input
             #date
+            formControlName="date"
             [owlDateTime]="dt1"
             [owlDateTimeTrigger]="dt1"
             placeholder="Дата"
@@ -85,6 +92,7 @@
           </div>
           <input
             #time
+            formControlName="time"
             [owlDateTime]="dt2"
             [owlDateTimeTrigger]="dt2"
             placeholder="Время"
@@ -98,12 +106,16 @@
   <!-- control block -->
   <div class="control-block">
     <h3 class="settings-panel-title">Удалить пост</h3>
-    <mat-radio-group class="settings-radio-group" [(ngModel)]="deleteOption">
+    <mat-radio-group
+      class="settings-radio-group"
+      formControlName="deleteControls"
+    >
       <mat-radio-button
         color="primary"
+        checked
         class="example-radio-button"
-        (change)="showDeleteControls = false"
-        [value]="1"
+        (change)="deleteChange(false)"
+        value="1"
       >
         Не удалять
       </mat-radio-button>
@@ -111,20 +123,20 @@
         color="primary"
         class="example-radio-button"
         [value]="2"
-        (change)="
-          $event.source.checked
-            ? (showDeleteControls = true)
-            : (showDeleteControls = false)
-        "
+        (change)="deleteChange(true)"
       >
         Установить время
       </mat-radio-button>
     </mat-radio-group>
-    <div class="delete-controls" *ngIf="showDeleteControls">
+    <div
+      class="delete-controls"
+      formGroupName="deleteGroup"
+      *ngIf="showDeleteControls"
+    >
       <div class="delete-control">
         <div class="settings-caption">Дней</div>
         <div class="settings-field">
-          <mat-select [formControl]="daySelected">
+          <mat-select formControlName="day">
             <mat-option *ngFor="let day of days" [value]="day">{{
               day
             }}</mat-option>
@@ -134,7 +146,7 @@
       <div class="delete-control">
         <div class="settings-caption">Часов</div>
         <div class="settings-field">
-          <mat-select [formControl]="hourSelected">
+          <mat-select formControlName="hour">
             <mat-option *ngFor="let hour of hours" [value]="hour">{{
               hour
             }}</mat-option>
@@ -143,4 +155,4 @@
       </div>
     </div>
   </div>
-</div>
+</form>
