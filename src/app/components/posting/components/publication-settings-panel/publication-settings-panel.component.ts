@@ -174,7 +174,7 @@ export class PublicationSettingsPanelComponent
   }
 
   timeChange(flag: boolean): void {
-    const { date, time } = this.settingsForm.controls.dateGroup.controls;
+    const { date, time } = this.settingsForm['controls'].dateGroup['controls'];
 
     if (flag) {
       date.setValidators([Validators.required]);
@@ -194,7 +194,7 @@ export class PublicationSettingsPanelComponent
   }
 
   deleteChange(flag: boolean): void {
-    const { day, hour } = this.settingsForm.controls.deleteGroup.controls;
+    const { day, hour } = this.settingsForm['controls'].deleteGroup['controls'];
 
     if (flag) {
       day.setValidators([Validators.required]);

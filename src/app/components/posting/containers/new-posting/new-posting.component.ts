@@ -65,10 +65,10 @@ export class NewPostingComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.settingsFormValid) {
+    if (this.postForm.valid) {
       alert('Данные фомры отправлены');
       return;
-    } else {
+    } else if (!this.settingsFormValid) {
       this.isOpen = true;
     }
   }
