@@ -25,6 +25,7 @@
     "@editorjs/list": "^1.6.1",
     "@ngrx/store": "^10.0.1",
     "angular-froala-wysiwyg": "^3.2.3",
+    "ng-pick-datetime": "^7.0.0",
     "routing": "0.0.2",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",

@@ -92,3 +92,101 @@
     }
   }
 }
+
+.date-controls {
+  margin-top: 12px;
+  display: flex;
+
+  > * {
+    &:not(:first-child) {
+      margin-left: 30px;
+    }
+  }
+
+  .settings-field {
+    display: flex;
+  }
+}
+
+.delete-controls {
+  display: flex;
+  margin-top: 12px;
+
+  > * {
+    &:not(:first-child) {
+      margin-left: 32px;
+    }
+  }
+
+  ::ng-deep {
+    .mat-select-trigger {
+      background-color: #ffffff;
+      padding: 9px 10px 8px 13px;
+      border-radius: 5px;
+      line-height: 1.1875;
+      font-size: 16px;
+      color: #4f4f4f;
+    }
+  }
+}
+
+.delete-control {
+  flex: 0 0 124px;
+  width: 124px;
+}
+
+.settings-caption {
+  color: #3e3e3f;
+  font-size: 14px;
+  line-height: 1.143;
+}
+
+.date-field {
+  flex: 0 0 139px;
+  width: 139px;
+}
+
+.timer-field {
+  flex: 0 0 118px;
+  width: 118px;
+}
+
+.settings-field {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-top: 10px;
+
+  input {
+    padding: 10px 11px;
+    border: 0;
+    min-width: 0;
+    font: 400 14px/1.143 "Roboto", sans-serif;
+    color: #000000;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.date-field-icon {
+  width: 40px;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: #979797;
+  cursor: pointer;
+
+  mat-icon {
+    width: 18px;
+    height: 18px;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

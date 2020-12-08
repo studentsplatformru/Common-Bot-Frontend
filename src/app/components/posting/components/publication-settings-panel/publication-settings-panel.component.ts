@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { MatRadioChange } from '@angular/material/radio';
 import { TelegramChat } from '../../models/telegram-chat.interface';
 
 @Component({
@@ -14,6 +16,11 @@ export class PublicationSettingsPanelComponent implements OnInit {
   public deleteOption: string | number = 1;
   public showDateControls: boolean = false;
   public showDeleteControls: boolean = false;
+  public daySelected: FormControl = new FormControl(0);
+  public hourSelected: FormControl = new FormControl(1);
+
+  public days: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  public hours: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   public chats: TelegramChat[] = [
     {
@@ -47,6 +54,10 @@ export class PublicationSettingsPanelComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  rofl(event: MatRadioChange): void {
+    console.log('event:', event.source.checked);
+  }
 
   toggle(chat: TelegramChat, event: MatCheckboxChange): void {
     this.isChecked();

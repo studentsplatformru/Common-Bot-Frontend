@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewPostingComponent } from './containers/new-posting/new-posting.component';
 import { PublicationSettingsPanelComponent } from './components/publication-settings-panel/publication-settings-panel.component';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 import 'froala-editor/js/plugins.pkgd.min.js';
 
@@ -18,6 +19,8 @@ import 'froala-editor/js/plugins.pkgd.min.js';
     FormsModule,
     FroalaEditorModule,
     FroalaViewModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
   ],
   declarations: [NewPostingComponent, PublicationSettingsPanelComponent],
 })
