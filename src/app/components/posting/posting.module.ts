@@ -9,6 +9,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 import 'froala-editor/js/plugins.pkgd.min.js';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import 'froala-editor/js/plugins.pkgd.min.js';
     FormsModule,
     FroalaEditorModule,
     FroalaViewModule,
+    MaterialModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
   ],

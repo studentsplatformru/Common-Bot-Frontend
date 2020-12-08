@@ -1,1 +1,34 @@
-<p>main-layout works!</p>
+<div class="flexbox">
+  <div id="myBots">
+    <h2>Мои боты</h2>
+    <div class="search-panel">
+      <app-searchbots></app-searchbots>
+      <app-searchbotsort></app-searchbotsort>
+    </div>
+    <div class="bots-slider">
+      <app-botbadge 
+        *ngFor="let bot of myBots"
+        [botName]="bot.botName"
+        [botDescription]="bot.botDescription"
+        [botIcon]="bot.botIcon"
+        [botChannels]="bot.botChannels"
+      ></app-botbadge>
+    </div>
+  </div>
+  <div id="allBots">
+    <h2>Библиотека ботов</h2>
+    <div class="search-panel">
+      <app-searchbots></app-searchbots>
+      <app-searchbotsort></app-searchbotsort>
+    </div>
+    <div class="bots-slider">
+      <app-botbadge 
+        *ngFor="let bot of allBots"
+        [botName]="bot.botName"
+        [botDescription]="bot.botDescription"
+        [botIcon]="bot.botIcon"
+      ></app-botbadge>
+    </div>
+  </div>
+</div>
+

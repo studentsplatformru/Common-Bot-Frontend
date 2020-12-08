@@ -1,0 +1,10 @@
+<div class="select-wrapper" appearance="fill">
+  <mat-select panelClass="search-select" matInput [(ngModel)]="selected">
+    <mat-option 
+      class="search-select"
+      *ngFor="let bot of bots"
+      [value]="bot.value">
+      {{bot.viewValue}}
+    </mat-option>
+  </mat-select>
+</div>

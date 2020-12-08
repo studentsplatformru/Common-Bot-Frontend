@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
-import { EmptyLayoutComponent } from './layout/empty-layout/empty-layout.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: MainLayoutComponent },
-  { path: 'auth', component: EmptyLayoutComponent },
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('./layout/empty-layout/empty-layout.module').then(
+        (m) => m.EmptyLayoutModule
+      ),
+  },
   {
     path: 'posting',
     loadChildren: () =>
@@ -16,10 +21,10 @@ const routes: Routes = [
   },
 ];
 
-export const routedComponents = [MainLayoutComponent, EmptyLayoutComponent];
+export const routedComponents = [MainLayoutComponent];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
