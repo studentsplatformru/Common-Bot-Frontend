@@ -1,21 +1,51 @@
-import { Component, OnInit } from '@angular/core';
 import {
+  Component,
+  EventEmitter,
+  forwardRef,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
+import {
+  AbstractControl,
+  ControlValueAccessor,
   FormArray,
   FormControl,
-  FormControlName,
   FormGroup,
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { MatCheckbox, MatCheckboxChange } from '@angular/material/checkbox';
-import { MatRadioChange } from '@angular/material/radio';
+import { Subscription } from 'rxjs';
 import { TelegramChat } from '../../models/telegram-chat.interface';
 
 @Component({
   selector: 'app-publication-settings-panel',
   templateUrl: './publication-settings-panel.component.html',
   styleUrls: ['./publication-settings-panel.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => PublicationSettingsPanelComponent),
+      multi: true,
+    },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => PublicationSettingsPanelComponent),
+      multi: true,
+    },
+  ],
 })
-export class PublicationSettingsPanelComponent implements OnInit {
+export class PublicationSettingsPanelComponent
+  implements OnInit, OnDestroy, ControlValueAccessor {
+  @Output() isFormValid: EventEmitter<boolean> = new EventEmitter<boolean>(
+    false
+  );
+  @Output()
+  publicationPlanned: EventEmitter<boolean> = new EventEmitter<boolean>(false);
+
   public isToggleAll: boolean = false;
   public counter: number = 3;
   public showDateControls: boolean = false;
@@ -77,14 +107,46 @@ export class PublicationSettingsPanelComponent implements OnInit {
   ];
 
   private selectedChats: TelegramChat[] = [];
+  private formChangesSubscription: Subscription;
 
   constructor() {}
 
+  onTouched: () => void = () => {};
+
+  writeValue(val: any): void {
+    val && this.settingsForm.setValue(val, { emitEvent: false });
+  }
+
+  registerOnChange(fn: any): void {
+    this.settingsForm.valueChanges.subscribe(fn);
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState?(isDisabled: boolean): void {
+    isDisabled ? this.settingsForm.disable() : this.settingsForm.enable();
+  }
+
+  validate(): ValidationErrors | null {
+    return this.settingsForm.valid
+      ? null
+      : {
+          invalidForm: {
+            valid: false,
+            message: 'basicInfoForm fields are invalid',
+          },
+        };
+  }
+
   ngOnInit(): void {
     this.createForm();
-    setInterval(() => {
-      console.log('this.settingsForm.valid:', this.settingsForm.valid);
-    }, 2000);
+    this.formChanges();
+  }
+
+  ngOnDestroy(): void {
+    this.formChangesSubscription.unsubscribe();
   }
 
   createForm(): void {
@@ -103,25 +165,37 @@ export class PublicationSettingsPanelComponent implements OnInit {
     });
   }
 
+  formChanges(): void {
+    this.formChangesSubscription = this.settingsForm.valueChanges.subscribe(
+      () => {
+        this.isFormValid.emit(this.settingsForm.valid);
+      }
+    );
+  }
+
   timeChange(flag: boolean): void {
     const { date, time } = this.settingsForm.controls.dateGroup.controls;
+
     if (flag) {
       date.setValidators([Validators.required]);
       time.setValidators([Validators.required]);
       date.updateValueAndValidity();
       time.updateValueAndValidity();
       this.showDateControls = true;
+      this.publicationPlanned.emit(true);
     } else {
       date.setValidators(null);
       time.setValidators(null);
       date.updateValueAndValidity();
       time.updateValueAndValidity();
       this.showDateControls = false;
+      this.publicationPlanned.emit(false);
     }
   }
 
   deleteChange(flag: boolean): void {
     const { day, hour } = this.settingsForm.controls.deleteGroup.controls;
+
     if (flag) {
       day.setValidators([Validators.required]);
       hour.setValidators([Validators.required]);
@@ -175,7 +249,7 @@ export class PublicationSettingsPanelComponent implements OnInit {
     this.counter += 3;
   }
 
-  checkboxChange(event, chat: TelegramChat): void {
+  checkboxChange(event: MatCheckbox, chat: TelegramChat): void {
     const formArray: FormArray = this.settingsForm.controls[
       'chats'
     ] as FormArray;

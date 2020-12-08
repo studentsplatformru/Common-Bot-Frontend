@@ -4,7 +4,7 @@
       <h1>Новый пост</h1>
       <div class="new-post-buttons">
         <button type="submit" mat-raised-button color="primary">
-          Опубликовать
+          {{ publicationPlanned ? "Запланировать" : "Опубликовать" }}
         </button>
         <button type="type" class="more-button">
           <span>Ещё</span>
@@ -14,7 +14,11 @@
     </div>
     <div class="new-post-content">
       <div class="new-post-editor">
-        <div class="froala-editor" [froalaEditor]="options"></div>
+        <div
+          class="froala-editor"
+          formControlName="editor"
+          [froalaEditor]="options"
+        ></div>
         <button
           [@moveExpandButton]="isOpen ? 'moved' : 'not-moved'"
           (click)="isOpen = !isOpen"
@@ -25,6 +29,9 @@
         </button>
       </div>
       <app-publication-settings-panel
+        (isFormValid)="settingsFormValid = $event"
+        (publicationPlanned)="publicationPlanned = $event"
+        formControlName="publicationSettings"
         [@openPanel]="isOpen ? 'open' : 'closed'"
       ></app-publication-settings-panel>
     </div>

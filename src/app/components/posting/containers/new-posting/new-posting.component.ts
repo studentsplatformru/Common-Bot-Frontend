@@ -6,7 +6,7 @@ import {
   animate,
 } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-new-posting',
@@ -49,7 +49,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class NewPostingComponent implements OnInit {
   public postForm: FormGroup;
-  public isOpen: boolean = true;
+  public isOpen: boolean = false;
+  public settingsFormValid: boolean = false;
+  public publicationPlanned: boolean = false;
   public options: Object = {
     toolbarInline: true,
     placeholderText: 'Выберите инструмент слева',
@@ -63,12 +65,18 @@ export class NewPostingComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.createForm();
+    if (this.settingsFormValid) {
+      alert('Данные фомры отправлены');
+      return;
+    } else {
+      this.isOpen = true;
+    }
   }
 
   createForm(): void {
     this.postForm = new FormGroup({
-      editor: new FormControl(''),
+      editor: new FormControl('', [Validators.required]),
+      publicationSettings: new FormControl('', [Validators.required]),
     });
   }
 }
