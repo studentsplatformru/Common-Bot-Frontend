@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   hide = true;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -31,6 +32,14 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegisterSubmit(): void {
-    alert(this.user.name + ' ' + this.user.email + ' ' + this.user.password);
+    this.http
+      .post(
+        'http://ec2-alb-170574020.eu-central-1.elb.amazonaws.com:8080/api/v1/register',
+        this.user
+      )
+      .subscribe(
+        (resp) => console.log(resp),
+        (error) => console.log(error)
+      );
   }
 }
