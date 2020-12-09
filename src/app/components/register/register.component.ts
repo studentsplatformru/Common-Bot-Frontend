@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { RegisterModel } from '../../models/register.model';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,11 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   hide = true;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private _auth: AuthService,
+    private _router: Router
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -32,14 +37,13 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegisterSubmit(): void {
-    this.http
-      .post(
-        'http://ec2-alb-170574020.eu-central-1.elb.amazonaws.com:8080/api/v1/register',
-        this.user
-      )
-      .subscribe(
-        (resp) => console.log(resp),
-        (error) => console.log(error)
-      );
+    this._auth.registerUser(this.user).subscribe(
+      (res) => {
+        console.log(res);
+        localStorage.setItem('token', res.token);
+        this._router.navigate(['/dashboard']);
+      },
+      (err) => console.log(err)
+    );
   }
 }
