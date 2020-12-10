@@ -1,0 +1,158 @@
+<form [formGroup]="settingsForm" class="settings-panel">
+  <!-- control block -->
+  <div class="control-block">
+    <h3 class="settings-panel-title">Место публикации</h3>
+    <div class="chats-wrapper">
+      <mat-checkbox
+        class="select-all-chats"
+        aria-label="Select All"
+        [checked]="isChecked()"
+        [indeterminate]="isIndeterminate()"
+        (change)="$event ? toggleAll($event) : null"
+      >
+        Выбрать все
+      </mat-checkbox>
+
+      <div class="chats">
+        <mat-checkbox
+          *ngFor="let chat of chats | slice: 0:counter"
+          color="primary"
+          (change)="
+            checkboxChange($event, chat); $event ? toggle(chat, $event) : null
+          "
+          [checked]="exists(chat)"
+          class="chat"
+        >
+          {{ chat.text }}
+        </mat-checkbox>
+      </div>
+
+      <button
+        (click)="showMore()"
+        *ngIf="counter < chats.length"
+        class="load-more-chats"
+      >
+        <span>Еще каналы</span>
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- control block -->
+  <div class="control-block">
+    <h3 class="settings-panel-title">Дата и время публикации</h3>
+    <mat-radio-group
+      class="settings-radio-group"
+      formControlName="dateControls"
+    >
+      <mat-radio-button
+        color="primary"
+        checked
+        class="example-radio-button"
+        value="1"
+        (change)="timeChange(false)"
+      >
+        Сейчас
+      </mat-radio-button>
+      <mat-radio-button
+        color="primary"
+        value="2"
+        class="example-radio-button"
+        (change)="timeChange(true)"
+      >
+        Установить время
+      </mat-radio-button>
+    </mat-radio-group>
+    <div
+      class="date-controls"
+      formGroupName="dateGroup"
+      *ngIf="showDateControls"
+    >
+      <div class="date-control">
+        <div class="settings-caption">Дата</div>
+        <div class="settings-field date-field">
+          <div class="date-field-icon" (click)="date.click()">
+            <mat-icon>date_range</mat-icon>
+          </div>
+          <input
+            #date
+            formControlName="date"
+            [owlDateTime]="dt1"
+            [owlDateTimeTrigger]="dt1"
+            placeholder="Дата"
+          />
+          <owl-date-time pickerType="calendar" #dt1></owl-date-time>
+        </div>
+      </div>
+      <div class="date-control">
+        <div class="settings-caption">Время</div>
+        <div class="settings-field timer-field">
+          <div class="date-field-icon" (click)="time.click()">
+            <mat-icon>access_time</mat-icon>
+          </div>
+          <input
+            #time
+            formControlName="time"
+            [owlDateTime]="dt2"
+            [owlDateTimeTrigger]="dt2"
+            placeholder="Время"
+          />
+          <owl-date-time pickerType="timer" #dt2></owl-date-time>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- control block -->
+  <div class="control-block">
+    <h3 class="settings-panel-title">Удалить пост</h3>
+    <mat-radio-group
+      class="settings-radio-group"
+      formControlName="deleteControls"
+    >
+      <mat-radio-button
+        color="primary"
+        checked
+        class="example-radio-button"
+        (change)="deleteChange(false)"
+        value="1"
+      >
+        Не удалять
+      </mat-radio-button>
+      <mat-radio-button
+        color="primary"
+        class="example-radio-button"
+        [value]="2"
+        (change)="deleteChange(true)"
+      >
+        Установить время
+      </mat-radio-button>
+    </mat-radio-group>
+    <div
+      class="delete-controls"
+      formGroupName="deleteGroup"
+      *ngIf="showDeleteControls"
+    >
+      <div class="delete-control">
+        <div class="settings-caption">Дней</div>
+        <div class="settings-field">
+          <mat-select formControlName="day">
+            <mat-option *ngFor="let day of days" [value]="day">{{
+              day
+            }}</mat-option>
+          </mat-select>
+        </div>
+      </div>
+      <div class="delete-control">
+        <div class="settings-caption">Часов</div>
+        <div class="settings-field">
+          <mat-select formControlName="hour">
+            <mat-option *ngFor="let hour of hours" [value]="hour">{{
+              hour
+            }}</mat-option>
+          </mat-select>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

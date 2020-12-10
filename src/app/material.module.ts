@@ -7,12 +7,40 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
-  imports: [ MatToolbarModule, MatButtonModule, MatInputModule, MatIconModule, MatAutocompleteModule,
-    MatDividerModule, MatMenuModule, MatSelectModule ],
-  exports: [ MatToolbarModule, MatButtonModule, MatInputModule, MatIconModule, MatAutocompleteModule,
-    MatSelectModule, MatDividerModule, MatMenuModule ],
+  imports: [
+    MatToolbarModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule,
+    MatAutocompleteModule,
+    MatDividerModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatSelectModule,
+  ],
+  exports: [
+    MatToolbarModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule,
+    MatAutocompleteModule,
+    MatSelectModule,
+    MatDividerModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatSelectModule,
+  ],
 })
 export class MaterialModule {}
