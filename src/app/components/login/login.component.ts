@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { LoginModel } from '../../models/login.model';
@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   user: LoginModel = new LoginModel();
   loginForm: FormGroup;
   hide = true;
+  stayLoggedIn = new FormControl(false);
 
   constructor(
     private formBuilder: FormBuilder,

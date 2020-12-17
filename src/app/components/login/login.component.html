@@ -1,49 +1,81 @@
-<div class="medium-list">
-  <div class="list-viewer-wrapper">
-    <div class="list-header-title">Register</div>
-
-    <form
+<div class="flexbox">
+  <div class="medium-list">
+    <div class="list-viewer-wrapper">
+      <h2>Вас приветствует</h2>
+      <h1>ISINKA</h1>
+      
+      <form
       [formGroup]="loginForm"
       (ngSubmit)="loginForm.valid && onLoginSubmit()"
       novalidate
-    >
-      <div class="form-container">
-        <mat-form-field>
-          <input
-            id="email"
-            matInput
-            formControlName="email"
-            [(ngModel)]="user.email"
-            placeholder="Enter your email"
-          />
-        </mat-form-field>
+      >
+        <div class="form-container">
+          <mat-form-field class="form-container__login-form">
+            <input
+              class="form-container__input"
+              id="email"
+              matInput
+              formControlName="email"
+              [(ngModel)]="user.email"
+              placeholder="Введите Ваш Email"
+            />
+          </mat-form-field>
+          
+          <mat-form-field class="form-container__password-form">
+            <input
+              class="form-container__input"
+              id="password"
+              matInput
+              formControlName="password"
+              [(ngModel)]="user.password"
+              placeholder="Введите Ваш пароль"
+              [type]="hide ? 'password' : 'text'"
+            />
+            <button mat-button (click)="hide = !hide" matSuffix mat-icon-button aria-label="Clear">
+              <mat-icon class="hide-icon">{{ hide ? "visibility" : "visibility_off" }}</mat-icon>
+            </button>
+          </mat-form-field>
+        
+          <div
+            class="form-container__info-form"
+          >
+            <mat-checkbox class="custom-frame" [formControl]="stayLoggedIn">Запомнить меня</mat-checkbox>
+            <a mat-button>Забыли пароль?</a>
+          </div>
+        
+          <button
+            mat-button
+            type="submit"
+            class="mat-raised-button mat-primary form-container__login-button"
+            [disabled]="!loginForm.valid"
+          >
+            Войти
+          </button>
 
-        <mat-form-field>
-          <input
-            id="password"
-            matInput
-            formControlName="password"
-            [(ngModel)]="user.password"
-            placeholder="Enter your password"
-            [type]="hide ? 'password' : 'text'"
-          />
-          <mat-icon matSuffix (click)="hide = !hide">
-            {{ hide ? "visibility" : "visibility_off" }}
-          </mat-icon>
-        </mat-form-field>
-
-        <button
-          mat-button
-          type="submit"
-          class="mat-raised-button mat-primary"
-          [disabled]="!loginForm.valid"
-        >
-          Login
-        </button>
-        <button mat-button routerLink="../register" class="divider">
-          Register
-        </button>
-      </div>
-    </form>
+          <button
+            class="form-container__telegram-button"
+            mat-button 
+          >
+            <svg width="23" height="18" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.7078 0.717003L1.22431 7.554C-0.105365 8.04 -0.0976722 8.715 0.98035 9.016L5.98255 10.436L17.5562 3.791C18.1034 3.488 18.6034 3.651 18.1924 3.983L8.81552 11.684H8.81332L8.81552 11.685L8.47046 16.377C8.97596 16.377 9.19903 16.166 9.48255 15.917L11.9122 13.767L16.9661 17.164C17.8979 17.631 18.5672 17.391 18.799 16.379L22.1166 2.151C22.4562 0.912003 21.5968 0.351003 20.7078 0.717003Z" fill="white"/>
+            </svg>
+            <h4>Войти через Телеграм</h4>
+          </button>
+          <div class="divider"></div>
+          <div class="form-container__register-button">
+            <h4>Еще нет аккаунта?</h4> 
+            <button 
+              mat-button 
+              routerLink="../register" 
+            >
+              <h3>Создать аккаунт</h3>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="image">
+    <img src="../../../assets/illustration.jpg" alt="">
   </div>
 </div>
