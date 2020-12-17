@@ -11,46 +11,46 @@
       >
         <div class="form-container">
           <mat-form-field>
+            <mat-label>Имя</mat-label>
             <input
               class="form-container__input"
               id="name"
               matInput
               formControlName="name"
               [(ngModel)]="user.name"
-              placeholder="Имя"
             />
           </mat-form-field>
 
           <mat-form-field>
+            <mat-label>Фамилия</mat-label>
             <input
               class="form-container__input"
               id="sername"
               matInput
-              placeholder="Фамилия"
             />
           </mat-form-field>
 
           <mat-form-field>
+            <mat-label>Введите Ваш email</mat-label>
             <input
               class="form-container__input"
               id="email"
               matInput
               formControlName="email"
               [(ngModel)]="user.email"
-              placeholder="Введите Ваш email"
             />
           </mat-form-field>
 
           <mat-form-field
             class="form-container__password-form"
           >
+            <mat-label>Введите Ваш пароль</mat-label>
             <input
               class="form-container__input"
               id="password"
               matInput
               formControlName="password"
               [(ngModel)]="user.password"
-              placeholder="Введите Ваш пароль"
               [type]="hide ? 'password' : 'text'"
             />
             <button mat-button (click)="hide = !hide" matSuffix mat-icon-button aria-label="Clear">

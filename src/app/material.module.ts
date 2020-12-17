@@ -9,7 +9,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   imports: [
@@ -25,7 +27,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatCheckboxModule,
   ],
   exports: [
-    MatFormFieldModule,
     MatToolbarModule,
     MatButtonModule,
     MatInputModule,
@@ -35,6 +36,15 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatDividerModule,
     MatMenuModule,
     MatCheckboxModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatSelectModule,
   ],
+  providers: [
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
+  ]
+    
 })
 export class MaterialModule {}

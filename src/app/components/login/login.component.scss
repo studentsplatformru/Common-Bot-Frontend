@@ -52,15 +52,6 @@
 .form-container{
   color: #FFFFFF;
 
-  &__form-container__password-form {
-    border: solid 1px  #FFFFFF;
-  }
-
-  ::ng-deep .mat-form-field-flex {
-    border: solid 1px  #FFFFFF;
-    border-radius: 5px;
-  }
-
   &__input {
     height: 32px;
     color: #FFFFFF;
@@ -128,22 +119,8 @@
   }
 }
 
-::ng-deep .mat-form-field-underline {
-  display: none;
-}
-
-::ng-deep .mat-input-element::placeholder {
-  color: #FFFFFF;
-}
-
-::ng-deep .mat-button-ripple.mat-ripple, .mat-button-focus-overlay, .mat-button-ripple-element {
-  display: none;
-}
-
 ::ng-deep .hide-icon {
   font-size: 24px !important;
-  margin-bottom: 22px;
-  margin-left: -20px;
 }
 
 ::ng-deep .mat-checkbox-checkmark {
@@ -156,18 +133,13 @@
 
 ::ng-deep .mat-form-field-label {
   color: #FFFFFF !important;
-  margin-left: 15px;
-  padding: 0 5px 0 5px;
-  background-color: #3770C6 !important;
-  width: fit-content !important;
-  z-index: 99;
+
 }
 
-::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
-  color: #f44336 !important;
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline{
+  color: #FFFFFF ;
 }
 
-::ng-deep .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label, .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
-  transform: translateY(-1.5125em) scale(0.75) perspective(100px) translateZ(0.001px);
- 
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick{
+  color: #FFFFFF ;
 }

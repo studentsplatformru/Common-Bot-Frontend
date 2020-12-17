@@ -11,24 +11,24 @@
       >
         <div class="form-container">
           <mat-form-field class="form-container__login-form">
+            <mat-label>Введите Ваш Email</mat-label>
             <input
               class="form-container__input"
               id="email"
               matInput
               formControlName="email"
               [(ngModel)]="user.email"
-              placeholder="Введите Ваш Email"
             />
           </mat-form-field>
           
           <mat-form-field class="form-container__password-form">
+            <mat-label>Введите Ваш пароль</mat-label>
             <input
               class="form-container__input"
               id="password"
               matInput
               formControlName="password"
               [(ngModel)]="user.password"
-              placeholder="Введите Ваш пароль"
               [type]="hide ? 'password' : 'text'"
             />
             <button mat-button (click)="hide = !hide" matSuffix mat-icon-button aria-label="Clear">
