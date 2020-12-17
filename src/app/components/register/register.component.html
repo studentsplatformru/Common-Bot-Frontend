@@ -1,57 +1,91 @@
-<div class="medium-list">
-  <div class="list-viewer-wrapper">
-    <div class="list-header-title">Register</div>
+<div class="flexbox">
+  <div class="medium-list">
+    <div class="list-viewer-wrapper">
+      <h2>Регистрация
+      <br>Нового Человека</h2>
+      <br>
+      <form
+        [formGroup]="registerForm"
+        (ngSubmit)="registerForm.valid && onRegisterSubmit()"
+        novalidate
+      >
+        <div class="form-container">
+          <mat-form-field>
+            <mat-label>Имя</mat-label>
+            <input
+              class="form-container__input"
+              id="name"
+              matInput
+              formControlName="name"
+              [(ngModel)]="user.name"
+            />
+          </mat-form-field>
 
-    <form
-      [formGroup]="registerForm"
-      (ngSubmit)="registerForm.valid && onRegisterSubmit()"
-      novalidate
-    >
-      <div class="form-container">
-        <mat-form-field>
-          <input
-            id="name"
-            matInput
-            formControlName="name"
-            [(ngModel)]="user.name"
-            placeholder="Enter your name"
-          />
-        </mat-form-field>
+          <mat-form-field>
+            <mat-label>Фамилия</mat-label>
+            <input
+              class="form-container__input"
+              id="sername"
+              matInput
+            />
+          </mat-form-field>
 
-        <mat-form-field>
-          <input
-            id="email"
-            matInput
-            formControlName="email"
-            [(ngModel)]="user.email"
-            placeholder="Enter your email"
-          />
-        </mat-form-field>
+          <mat-form-field>
+            <mat-label>Введите Ваш email</mat-label>
+            <input
+              class="form-container__input"
+              id="email"
+              matInput
+              formControlName="email"
+              [(ngModel)]="user.email"
+            />
+          </mat-form-field>
 
-        <mat-form-field>
-          <input
-            id="password"
-            matInput
-            formControlName="password"
-            [(ngModel)]="user.password"
-            placeholder="Enter your password"
-            [type]="hide ? 'password' : 'text'"
-          />
-          <mat-icon matSuffix (click)="hide = !hide">{{
-            hide ? "visibility" : "visibility_off"
-          }}</mat-icon>
-        </mat-form-field>
+          <mat-form-field
+            class="form-container__password-form"
+          >
+            <mat-label>Введите Ваш пароль</mat-label>
+            <input
+              class="form-container__input"
+              id="password"
+              matInput
+              formControlName="password"
+              [(ngModel)]="user.password"
+              [type]="hide ? 'password' : 'text'"
+            />
+            <button mat-button (click)="hide = !hide" matSuffix mat-icon-button aria-label="Clear">
+              <mat-icon class="hide-icon">{{ hide ? "visibility" : "visibility_off" }}</mat-icon>
+            </button>
+          </mat-form-field>
 
-        <button
-          mat-button
-          type="submit"
-          class="mat-raised-button mat-primary"
-          [disabled]="!registerForm.valid"
-        >
-          Register
-        </button>
-        <button mat-button routerLink="../login" class="divider">Login</button>
-      </div>
-    </form>
+          <button
+            mat-button
+            type="submit"
+            class="mat-raised-button mat-primary form-container__login-button"
+            [disabled]="!registerForm.valid"
+          >
+            Регистрация
+          </button>
+          <div class="form-container__info-form">
+            На указанную почту было отправлено письмо с подтверждением! 
+          </div>
+
+          <div class="divider"></div>
+          <div class="form-container__register-button">
+            <h4>Есть аккаунт?</h4>
+            <button 
+            mat-button 
+            routerLink="../login"
+            >
+              <h3>Войти</h3>
+            </button>
+          </div>
+          
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="image">
+    <img src="../../../assets/illustration.jpg" alt="">
   </div>
 </div>

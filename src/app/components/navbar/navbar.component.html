@@ -1,12 +1,27 @@
-<mat-toolbar class="navbar">
-  <mat-toolbar-row class="navbar-wrapper">
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-button routerLink="/dashboard">TBot</button>
+
+    <span class="spacer"></span>
     <div class="nav-links">
-      <a mat-button [routerLink]><h3>Название</h3></a>
       <span class="menu-spacer"></span>
       <a mat-button [routerLink]><span>О сервисе</span></a>
       <a mat-button [routerLink]><span>Тарифы</span></a>
       <a mat-button [routerLink]><span>Инструкции</span></a>
     </div>
-    <app-userpanel class="nav-user-panel"></app-userpanel>
+
+    <!-- login and registration buttons are visible only when user is logged out -->
+    <button mat-button routerLink="/register">Register</button>
+    <button mat-button routerLink="/login">Login</button>
+    <!--
+      
+    <app-userpanel class="nav-user-panel"></app-userpanel> 
+      <button
+      mat-button
+      *ngIf="_authService.loggedIn()"
+      (click)="!_authService.loggedIn()"
+    >
+      Logout
+    </button> -->
   </mat-toolbar-row>
 </mat-toolbar>
