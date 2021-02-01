@@ -17,6 +17,8 @@ import {
   NavbarComponent,
   UserpanelComponent,
 } from './components';
+import { DynamicFormQuestionComponent } from './posting-sidepanel/components/dynamic-form-question/dynamic-form-question.component';
+import { DynamicFormComponent } from './posting-sidepanel/components/dynamic-form/dynamic-form.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import {
     SearchbotsortComponent,
     SearchbotsComponent,
     UserpanelComponent,
+    DynamicFormQuestionComponent,
+    DynamicFormComponent,
   ],
   imports: [
     ReactiveFormsModule,
