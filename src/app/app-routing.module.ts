@@ -12,13 +12,6 @@ const routes: Routes = [
         (m) => m.EmptyLayoutModule
       ),
   },
-  {
-    path: 'posting',
-    loadChildren: () =>
-      import('./components/posting/posting.module').then(
-        (m) => m.PostingModule
-      ),
-  },
 ];
 
 export const routedComponents = [MainLayoutComponent];
