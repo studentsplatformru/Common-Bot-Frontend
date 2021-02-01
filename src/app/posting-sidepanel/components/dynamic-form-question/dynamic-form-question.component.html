@@ -1,0 +1,36 @@
+<div [formGroup]="form">
+  <label [attr.for]="question.key">{{ question.label }}</label>
+
+  <div [ngSwitch]="question.controlType">
+    <div *ngSwitchCase="'checkbox'" class="question-card-container">
+      <md-card class="question-card" [formArrayName]="question.key">
+        <label [attr.for]="question.key">{{ question.label }}</label>
+        <md-checkbox
+          class="phil-checkbox"
+          *ngFor="let opt of question.options; let i = index"
+          [formControlName]="i"
+          >{{ opt.value }}</md-checkbox
+        >
+        <div class="errorMessage" *ngIf="!isValid">
+          {{ question.label }} is required
+        </div>
+      </md-card>
+    </div>
+  </div>
+  <mat-form-field>
+    <input
+      matInput
+      [ngxMatDatetimePicker]="picker"
+      placeholder="Choose a date & time"
+      [(ngModel)]="myDatePicker"
+    />
+
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+
+    <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+  </mat-form-field>
+
+  <div class="errorMessage" *ngIf="!isValid">
+    {{ question.label }} is required
+  </div>
+</div>
